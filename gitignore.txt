@@ -1,0 +1,28 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos temporales o de respaldo
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Directorios de compilación o distribución 
+dist/
+build/
+
+# Archivos de entorno
+.env
+
+# Archivos personales o del editor
+.vscode/
+.idea/
+*.code-workspace
+
+# Sistema operativo
+ehthumbs.db
+desktop.ini
+
+# Archivos de sistema de Mac/Linux
+__MACOSX/
