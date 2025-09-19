@@ -33,6 +33,3 @@ function calculadora() {
     alert ("la suma total es " + suma);
   }
 };
-
-//llamada a la funcion para inciar las operaciones matemáticas
-calculadora(); 
