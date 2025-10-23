@@ -1,4 +1,4 @@
-// cantidad de números que desea sumar - parseado a int
+/// cantidad de números que desea sumar - parseado a int
 function calculadora() {
   let continuar = true;
   let resultados = [];
