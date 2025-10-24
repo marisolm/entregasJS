@@ -13,58 +13,67 @@ let botonVaciar = document.getElementById("vaciarCarrito");
 let botonPagar = document.getElementById("pagarCarrito");
 
 
+// guardar en localStorage
+function guardarCarrito() {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+// cargar desde localStorage -si existe-
+function cargarCarrito(){
+    const carritoGuardado = localStorage.getItem("carrito");
+    if(carritoGuardado){
+        carrito = JSON.parse(carritoGuardado);
+        actualizarCarrito();
+    }
+}
 
 // agregar producto al carrito
-function agregarAlCarrito(id){
-    // Obtener nombre y precio desde el DOM
+function agregarAlCarrito(id) {
     let nombre = document.getElementById(`nombre${id}`).textContent;
     let precioTexto = document.getElementById(`precio${id}`).textContent;
-    let precio = parseFloat(precioTexto.replace("USD", "").trim());
+    let precio = parseInt(precioTexto.replace("USD", "").trim());
 
-    // Crear objeto producto
-    let producto = {nombre, precio};
-
-    // Agregar producto al carrito, validar si ya existe
+    // agregar producto al carrito, validar si ya existe
     const existente = carrito.find((item) => item.nombre === nombre);
-    if (existente){
+    if(existente){
         existente.cantidad++;
     }else{
         carrito.push({ nombre, precio, cantidad: 1 });
     }
 
-    // Actualizar el HTML del carrito
-    mostrarCarrito();
+    actualizarCarrito(); // actualizar el HTML del carrito
+    guardarCarrito(); // guardar cada vez que se actualiza
 }
 
-
 // mostrar los productos en el carrito
-function mostrarCarrito(){
-    carritoLista.innerHTML = ""; // Limpiar contenido previo
+function actualizarCarrito(){
+    carritoLista.innerHTML = ""; // limpiar contenido previo
 
     if(carrito.length === 0){
         carritoLista.innerHTML = `<p class="void-cart">No tiene artículos en su carrito.</p>`;
-        totalCarrito.textContent = "0.00";
+        totalCarrito.textContent = "0";
         return;
     }
-    carrito.forEach((item) =>{
-    const div = document.createElement("div");
-    div.classList.add("cart-item");
-    div.innerHTML = `<p>${item.nombre} (x${item.cantidad}) - USD ${(item.precio * item.cantidad)}</p>`;
-    carritoLista.appendChild(div);
-
+    carrito.forEach((item) => {
+        const div = document.createElement("div");
+        div.classList.add("cart-item");
+        div.innerHTML = `<p>${item.nombre} (x${item.cantidad}) - USD ${item.precio * item.cantidad}</p>`;
+        carritoLista.appendChild(div);
     });
-    // Calcular total
+
+    // calcular total
     let total = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
     totalCarrito.textContent = total;
 }
 
-// Función para vaciar el carrito
+// vaciar el carrito
 function vaciarCarrito(){
     carrito = [];
-    mostrarCarrito();
+    actualizarCarrito();
+    localStorage.removeItem("carrito"); // limpiar también el almacenamiento
 }
 
-// Función para simular pago
+// simular pago
 function simularPago(){
     if(carrito.length === 0){
         alert("El carrito está vacío. Agregue productos antes de pagar.");
@@ -72,6 +81,7 @@ function simularPago(){
     }
     let total = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
     alert(`Pago simulado con éxito.\nTotal abonado: USD ${total}`);
+
     vaciarCarrito();
 }
 
@@ -83,3 +93,7 @@ boton3.onclick = function(){ agregarAlCarrito(this.id.replace("producto", ""));}
 // Asignar eventos a los botones del carrito
 botonVaciar.onclick = vaciarCarrito;
 botonPagar.onclick = simularPago;
+
+
+// cargar carrito desde memoria al iniciar la página si existe
+cargarCarrito();
