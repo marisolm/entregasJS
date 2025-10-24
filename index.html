@@ -1,50 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venta de articulos de cuero</title>
-    <link rel="stylesheet" href="../css/style.css"/>
-</head>
-<body>
-    <main>
-        <h2>Productos disponibles</h2>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Venta de articulos de cuero</title>
+        <link rel="stylesheet" href="../css/style.css"/>
+    </head>
+    <body>
+        <main>
+            <h2>Productos disponibles</h2>
 
-        <div class="product-grid">
-            <section class="product-item">
-                <img src="../img/cuero1.jpg" alt="cartera de cuero" >
-                <h4>Bolso de cuero</h4>
-                <p>Bolso 100% cuero en colores varios y detalles en metal</p>
-                <p>USD 230</p>
-                <button id="agregarCarrito">Agregar al carrito</button>
-            </section>
+            <div class="product-grid">
+                <section class="product-item">
+                    <img src="../img/cuero1.jpg" alt="cartera de cuero" >
+                    <h4 id="nombre1">Bolso de cuero</h4>
+                    <p>Bolso 100% cuero en colores varios y detalles en metal</p>
+                    <p id="precio1">USD 230</p>
+                    <button id="producto1" class="add-to-cart">Agregar al carrito</button>
+                </section>
 
-            <section class="product-item">
-                <img src="../img/cuero2.jpg" alt="accesorios de cuero" >
-                <h4>Accesorio de cuero</h4>
-                <p>Cartuchera de cuero con cierre de metal y compartimientos</p>
-                <p>USD 40</p>
-                <button id="agregarCarrito">Agregar al carrito</button>
-            </section>
+                <section class="product-item">
+                    <img src="../img/cuero2.jpg" alt="accesorios de cuero" >
+                    <h4 id="nombre2">Accesorio de cuero</h4>
+                    <p>Cartuchera de cuero con cierre de metal y compartimientos</p>
+                    <p id="precio2">USD 40</p>
+                    <button id="producto2" class="add-to-cart">Agregar al carrito</button>
+                </section>
 
-            <section class="product-item">
-                <img src="../img/cuero3.jpg" alt="cartera de simil" >
-                <h4>Bolso de simil cuero</h4>
-                <p>Bolso de simil cuero ecológico con estampado animal print</p>
-                <p>USD 120</p>
-                <button id="agregarCarrito">Agregar al carrito</button>
-            </section>
+                <section class="product-item">
+                    <img src="../img/cuero3.jpg" alt="cartera de simil" >
+                    <h4 id="nombre3">Bolso de simil cuero</h4>
+                    <p>Bolso de simil cuero ecológico con estampado animal print</p>
+                    <p id="precio3">USD 120</p>
+                    <button id="producto3" class="add-to-cart">Agregar al carrito</button>
+                </section>
 
-            <aside id="carrito-section">
-                <h2>Carrito</h2>
-                <div id="carrito-list"><p class="muted">No tiene artículos en su carrito.</p></div>
-                <div class="cart-footer">
-                    <p>Total: <span id="cart-total">0.00</span> USD</p>
-                    <button id="btn-clear" class="btn">Vaciar carrito</button>
-                    <button id="btn-checkout" class="btn primary">Simular pago</button>
-                </div>
-            </aside>
-        </div>
-    </main>
-</body>
+                <aside id="carritoResumen">
+                    <h2>Carrito</h2>
+                    <div id="carritoLista"><p class="void-cart">No tiene artículos en su carrito.</p></div>
+                    <div class="cart-footer">
+                        <p>Total: <span id="totalCarrito">0.00</span> USD</p>
+                        <button id="vaciarCarrito" class="btn">Vaciar carrito</button>
+                        <button id="pagarCarrito" class="btn primary">Simular pago</button>
+                    </div>
+                </aside>
+            </div>
+        </main>
+        <script src="./js/main.js"></script>
+    </body>
 </html>
