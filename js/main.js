@@ -94,6 +94,5 @@ boton3.onclick = function(){ agregarAlCarrito(this.id.replace("producto", ""));}
 botonVaciar.onclick = vaciarCarrito;
 botonPagar.onclick = simularPago;
 
-
 // cargar carrito desde memoria al iniciar la página si existe
 cargarCarrito();
