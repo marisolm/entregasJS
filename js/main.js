@@ -54,8 +54,8 @@ function mostrarCarrito(){
 
     });
     // Calcular total
-    let total = carrito.reduce((acc, item) => acc + item.precio, 0);
-    totalCarrito.textContent = total.toFixed(2);
+    let total = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+    totalCarrito.textContent = total;
 }
 
 // Función para vaciar el carrito
@@ -70,8 +70,8 @@ function simularPago(){
         alert("El carrito está vacío. Agregue productos antes de pagar.");
         return;
     }
-    let total = carrito.reduce((acc, item) => acc + item.precio, 0);
-    alert(`Pago simulado con éxito.\nTotal abonado: USD ${total.toFixed(2)}`);
+    let total = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+    alert(`Pago simulado con éxito.\nTotal abonado: USD ${total}`);
     vaciarCarrito();
 }
 
