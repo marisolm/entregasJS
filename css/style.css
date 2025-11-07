@@ -1,16 +1,141 @@
-/* Sección de productos */
-main .product-grid {
+@charset "UTF-8";
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+.header-nav, .header-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.roboto-mono-font, * {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+/************* header *************/
+.header-left {
+  height: 3rem;
+  width: 12rem;
+  margin-top: 5px;
+  vertical-align: middle;
+  margin-right: 50px;
+}
+
+.menu-space {
+  padding-right: 4%;
+}
+
+.header-center {
+  list-style: none;
+  align-items: center;
+}
+
+.header-center li {
+  margin-left: 30px;
+  padding-top: 20px;
+}
+
+.header-right {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-right: 30px;
+  border: 2px solid rgb(196, 169, 133);
+  border-radius: 15px;
+  background-color: rgb(196, 169, 133);
+  color: black;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.header-right:hover {
+  background-color: rgb(170, 145, 110);
+}
+
+/************* main *************/
+main {
+  flex: 1;
+  padding-top: 10rem;
+}
+
+.main-h1 {
+  color: #f5f5dc;
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.main-p {
+  color: #f5f5dc;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.main-btn {
+  color: #f5f5dc;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid #f5f5dc;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.main-section {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-index {
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.index-background {
+  background-image: url(../img/portada.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: relative;
+}
+
+.centered {
+  text-align: center;
+  font-size: 2rem;
+  padding-top: 15px;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: #000 !important;
+  border-bottom: 2px solid #c4a985;
+}
+
+/************* productos *************/
+.product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   padding: 2rem;
 }
 
-#agregarCarrito:hover {
+.product-item:hover {
   transform: scale(1.03);
 }
 
-main .product-grid section {
+.product-grid section {
   background-color: white;
   padding: 1rem;
   border-radius: 10px;
@@ -18,10 +143,86 @@ main .product-grid section {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-main .product-grid img {
-  width: 80%;
+.product-grid img {
+  width: 75%;
   height: auto;
   border-radius: 8px;
   object-fit: cover;
   padding-bottom: 1em;
+}
+
+#agregarCarrito:hover {
+  transform: scale(1.03);
+}
+
+/************* footer *************/
+footer {
+  background: rgb(34, 33, 33);
+  color: rgb(255, 255, 255);
+  height: 5%;
+  padding: 1rem 2rem;
+  width: 100%;
+}
+footer nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-logos {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.footer-logos img {
+  height: 30px;
+  width: 30px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.footer-logos img:hover {
+  transform: scale(1.1);
+}
+
+body {
+  background-color: rgb(218, 218, 218);
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/*Fonts*/
+.font-regular {
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.font-bold {
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/*Media queries*/
+@media only screen and (min-width: 900px) {
+  footer nav img {
+    height: 35px;
+    margin-right: 10px;
+  }
+}
+@media only screen and (max-width: 899px) {
+  footer nav {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  .footer-logos {
+    justify-content: center;
+  }
 }
