@@ -1,11 +1,6 @@
 // Variable para almacenar los productos agregados
 let carrito = [];
 
-// Capturar botones de productos
-let boton1 = document.getElementById("producto1");
-let boton2 = document.getElementById("producto2");
-let boton3 = document.getElementById("producto3");
-
 // Capturar elementos del carrito
 let carritoLista = document.getElementById("carritoLista");
 let totalCarrito = document.getElementById("totalCarrito");
@@ -28,6 +23,33 @@ function cargarCarrito(){
     }
     actualizarContador();
 }
+
+// cargar productos desde JSON
+fetch("productos.json")
+  .then((res) => res.json())
+  .then((productos) => {
+    mostrarProductos(productos);
+  })
+  .catch((error) => console.error("Error al cargar productos:", error));
+
+  // mostrar productos en la página
+function mostrarProductos(productos) {
+  const contenedor = document.getElementById("contenedor-productos");
+  contenedor.innerHTML = "";
+
+  productos.forEach((producto) => {
+    const section = document.createElement("section");
+    section.classList.add("product-item");
+
+    section.innerHTML = `
+      <img src="${producto.img}" alt="${producto.nombre}">
+      <h4>${producto.nombre}</h4>
+      <p>${producto.descripcion}</p>
+      <p>USD ${producto.precio}</p>
+      <button class="add-to-cart" data-id="${producto.id}">Agregar al carrito</button>
+    `;
+    contenedor.appendChild(section);
+  });
 
 // agregar producto al carrito
 function agregarAlCarrito(id) {
