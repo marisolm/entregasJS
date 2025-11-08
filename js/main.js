@@ -50,7 +50,7 @@ function mostrarProductos(productos) {
     `;
     contenedor.appendChild(section);
   });
-
+}
 // agregar producto al carrito
 function agregarAlCarrito(id) {
     let nombre = document.getElementById(`nombre${id}`).textContent;
