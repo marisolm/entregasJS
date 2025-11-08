@@ -22,23 +22,9 @@
   },
   {
     "id": 4,
-    "nombre": "Bolso de cuero",
-    "descripcion": "Bolso 100% cuero en colores varios y detalles en metal",
-    "precio": 230,
-    "img": "img/cuero1.jpg"
-  },
-  {
-    "id": 5,
-    "nombre": "Accesorio de cuero",
-    "descripcion": "Cartuchera de cuero con cierre de metal y compartimientos",
-    "precio": 40,
-    "img": "img/cuero2.jpg"
-  },
-  {
-    "id": 6,
-    "nombre": "Bolso de simil cuero",
-    "descripcion": "Bolso ecológico con estampado animal print",
-    "precio": 120,
-    "img": "img/cuero3.jpg"
+    "nombre": "Billetera de cuero",
+    "descripcion": "Billetera 100% cuero en colores varios",
+    "precio": 35,
+    "img": "img/cuero4.jpg"
   }
 ]

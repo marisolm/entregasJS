@@ -24,7 +24,7 @@ function cargarCarrito(){
     actualizarContador();
 }
 
-// cargar productos desde JSON
+// cargar productos desde json
 fetch("productos.json")
   .then((res) => res.json())
   .then((productos) => {
@@ -50,19 +50,26 @@ function mostrarProductos(productos) {
     `;
     contenedor.appendChild(section);
   });
+
+  //escuchar los eventos de botones de los productos
+  document.querySelectorAll(".add-to-cart").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const id = e.target.dataset.id;
+      const producto = productos.find((p) => p.id == id);
+      agregarAlCarrito(producto);
+    });
+  });
 }
+
 // agregar producto al carrito
-function agregarAlCarrito(id) {
-    let nombre = document.getElementById(`nombre${id}`).textContent;
-    let precioTexto = document.getElementById(`precio${id}`).textContent;
-    let precio = parseInt(precioTexto.replace("USD", "").trim());
+function agregarAlCarrito(producto) {
 
     // agregar producto al carrito, validar si ya existe
-    const existente = carrito.find((item) => item.nombre === nombre);
-    if(existente){
+    const existente = carrito.find((item) => item.nombre === producto.nombre);
+    if (existente){
         existente.cantidad++;
     }else{
-        carrito.push({ nombre, precio, cantidad: 1 });
+        carrito.push({ nombre: producto.nombre, precio: producto.precio, cantidad: 1 });
     }
 
     actualizarCarrito(); // actualizar el HTML del carrito
@@ -117,11 +124,6 @@ function simularPago(){
     vaciarCarrito();
     actualizarContador();
 }
-
-// Asignar eventos a los botones de productos (usando this.id)
-boton1.onclick = function(){ agregarAlCarrito(this.id.replace("producto", ""));};
-boton2.onclick = function(){ agregarAlCarrito(this.id.replace("producto", ""));};
-boton3.onclick = function(){ agregarAlCarrito(this.id.replace("producto", ""));};
 
 // Asignar eventos a los botones del carrito
 botonVaciar.onclick = vaciarCarrito;

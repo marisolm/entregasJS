@@ -128,7 +128,7 @@ main {
 }
 
 .product-grid img {
-  width: 75%;
+  width: 100%;
   height: auto;
   border-radius: 8px;
   object-fit: cover;
