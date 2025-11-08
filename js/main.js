@@ -107,26 +107,48 @@ function vaciarCarrito(){
     actualizarContador();
 }
 
+// confirmación solo al presionar el botón Vaciar
+function mensajesVaciar() {
+  if (carrito.length === 0) {
+    Swal.fire("Carrito vacío", "No hay productos para eliminar.", "info");
+    return;
+  }
+
+  Swal.fire({
+    title: "¿Vaciar carrito?",
+    text: "Se eliminarán todos los productos agregados.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Sí, vaciar",
+    cancelButtonText: "Cancelar"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      vaciarCarrito();
+      Swal.fire("Carrito vacío", "Todos los productos fueron eliminados.", "success");
+    }
+  });
+}
+
 function actualizarContador() {
     const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
     contadorCarrito.textContent = totalItems;
 }
 
 // simular pago
-function simularPago(){
-    if(carrito.length === 0){
-        alert("El carrito está vacío. Agregue productos antes de pagar.");
-        return;
-    }
-    let total = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
-    alert(`Pago simulado con éxito.\nTotal abonado: USD ${total}`);
-
-    vaciarCarrito();
-    actualizarContador();
+function simularPago() {
+  if (carrito.length === 0) {
+    Swal.fire("Carrito vacío", "Agregue productos antes de pagar.", "warning");
+    return;
+  }
+  let total = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+  Swal.fire("Pago exitoso", `Total abonado: USD ${total}`, "success");
+  vaciarCarrito();
 }
 
 // Asignar eventos a los botones del carrito
-botonVaciar.onclick = vaciarCarrito;
+botonVaciar.onclick = mensajesVaciar;
 botonPagar.onclick = simularPago;
 
 // cargar carrito desde memoria al iniciar la página si existe
