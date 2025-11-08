@@ -11,6 +11,7 @@ let carritoLista = document.getElementById("carritoLista");
 let totalCarrito = document.getElementById("totalCarrito");
 let botonVaciar = document.getElementById("vaciarCarrito");
 let botonPagar = document.getElementById("pagarCarrito");
+let contadorCarrito = document.getElementById("contadorCarrito");
 
 
 // guardar en localStorage
@@ -25,6 +26,7 @@ function cargarCarrito(){
         carrito = JSON.parse(carritoGuardado);
         actualizarCarrito();
     }
+    actualizarContador();
 }
 
 // agregar producto al carrito
@@ -64,6 +66,8 @@ function actualizarCarrito(){
     // calcular total
     let total = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
     totalCarrito.textContent = total;
+
+    actualizarContador();
 }
 
 // vaciar el carrito
@@ -71,6 +75,12 @@ function vaciarCarrito(){
     carrito = [];
     actualizarCarrito();
     localStorage.removeItem("carrito"); // limpiar también el almacenamiento
+    actualizarContador();
+}
+
+function actualizarContador() {
+    const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+    contadorCarrito.textContent = totalItems;
 }
 
 // simular pago
@@ -83,6 +93,7 @@ function simularPago(){
     alert(`Pago simulado con éxito.\nTotal abonado: USD ${total}`);
 
     vaciarCarrito();
+    actualizarContador();
 }
 
 // Asignar eventos a los botones de productos (usando this.id)

@@ -25,7 +25,24 @@
             <li class="menu-space nav-item"><a class="nav-link active" href="#inicio">Inicio</a></li>
             <li class="menu-space nav-item"><a class="nav-link" href="#productos">Productos</a></li>
           </ul>
-          <a href="#contacto" class="header-right nav-link btn btn-outline-dark">Suscribite</a>
+          <div class="header-right dropdown">
+            <button class="btn btn-outline-dark dropdown-toggle" type="button" id="carritoBtn" data-bs-toggle="dropdown" aria-expanded="false">
+            <img id="carritoIcon" src="img/carrito.png" alt="carrito">
+            Carrito
+            <span id="contadorCarrito" class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-pill">0</span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end p-3 carrito-dropdown" aria-labelledby="carritoBtn">
+              <div id="carritoLista" class="carrito-lista">
+                <p class="void-cart">No tiene artículos en su carrito.</p>
+              </div>
+              <hr>
+                <p class="text-end mb-2">Total: <span id="totalCarrito">0</span> USD</p>
+                <div class="d-flex justify-content-between">
+                  <button id="vaciarCarrito" class="btn btn-sm btn-outline-secondary">Vaciar</button>
+                  <button id="pagarCarrito" class="btn btn-sm btn-dark">Pagar</button>
+                </div>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
@@ -86,16 +103,6 @@
         <p id="precio3">USD 120</p>
         <button id="producto3" class="add-to-cart">Agregar al carrito</button>
       </section>
-
-      <aside id="carritoResumen">
-          <h2>Carrito</h2>
-          <div id="carritoLista"><p class="void-cart">No tiene artículos en su carrito.</p></div>
-          <div class="cart-footer">
-              <p>Total: <span id="totalCarrito">0</span> USD</p>
-              <button id="vaciarCarrito" class="btn">Vaciar carrito</button>
-              <button id="pagarCarrito" class="btn primary">Simular pago</button>
-          </div>
-      </aside>
     </div>
   </section>
 

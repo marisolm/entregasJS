@@ -41,22 +41,6 @@ html {
   padding-top: 20px;
 }
 
-.header-right {
-  margin-top: 12px;
-  margin-bottom: 12px;
-  margin-right: 30px;
-  border: 2px solid rgb(196, 169, 133);
-  border-radius: 15px;
-  background-color: rgb(196, 169, 133);
-  color: black;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-}
-
-.header-right:hover {
-  background-color: rgb(170, 145, 110);
-}
-
 /************* main *************/
 main {
   flex: 1;
@@ -153,6 +137,62 @@ main {
 
 #agregarCarrito:hover {
   transform: scale(1.03);
+}
+
+/************* carrito *************/
+#carritoIcon {
+  height: 25px;
+  width: auto;
+}
+
+.carrito-dropdown {
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  border-radius: 10px;
+  background-color: #fffaf3;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.carrito-lista {
+  max-height: 250px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+#contadorCarrito {
+  font-size: 0.75rem;
+  padding: 0.3em 0.5em;
+  line-height: 1;
+  min-width: 20px;
+  text-align: center;
+}
+
+.cart-item {
+  border-bottom: 1px solid #e0d6c5;
+  padding: 8px 0;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.void-cart {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.dropdown-menu.show {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /************* footer *************/
